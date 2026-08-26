@@ -15,7 +15,14 @@ class Personagem{
         if(this.vida <= 0){
             this.vida = "eliminado"
         }
-    }  
+    }
+    estaVivo(){
+        return this.vida > 0
+    }
+
+    mostrarStatus(){
+        console.log(this.nome + " | Vida: " + this.vida)
+    }
 }
 
 const druida = new Personagem("kode", 80, 25)
@@ -26,13 +33,4 @@ const tanque = new Personagem("Reinhardt", 90, 15)
 const necromante = new Personagem("Mortis", 70, 20)
 const assassino = new Personagem("Zephyr", 50, 30)
 
-
-mago.causaDano(arqueiro)
-arqueiro.causaDano(mago)
-assassino.causaDano(necromante)
-assassino.causaDano(mago)
-arqueiro.causaDano(assassino)
-necromante.causaDano(assassino)
-arqueiro.causaDano(assassino)
-
-console.log(mago.vida, arqueiro.vida, assassino.vida, necromante.vida)
+console.log (mago.mostrarStatus())
