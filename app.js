@@ -2,13 +2,17 @@ class Personagem{
     constructor(nome, vida, ataque,defesa){
         this.nome = nome,
         this.vida = vida,
-        this.vidaMaxima = vida,
+        this.vidaMax = vida,
         this.ataque = ataque,
         this.defesa = defesa
     }
 
     curar(quantidade){
         this.vida = this.vida + quantidade
+
+        if(this.vida > this.vidaMax){
+            this.vida = this.vidaMax
+        }
     }
 
     causaDano(personagem){
@@ -37,14 +41,56 @@ class Personagem{
     }
 }
 
-const druida = new Personagem("kode", 80, 25, 8)
-const guerreiro = new Personagem("Thorin", 60, 20, 15)
-const mago = new Personagem("Gandalfe", 60, 35, 5)
-const arqueiro = new Personagem("Legolas", 80, 25, 12)
-const tanque = new Personagem("Reinhardt", 90, 15, 3)
-const necromante = new Personagem("Mortis", 70, 20, 9)
-const assassino = new Personagem("Zephyr", 50, 30, 10)
+class Guerreiro extends Personagem {
+    golpePesado(personagem){
+        personagem.recebeDano(this.ataque * 2)
+    }
+}
 
-druida.causaDano(mago)
+class Arqueiro extends Personagem {
+    tiroPreciso(personagem){
+        personagem.recebeDano(this.ataque + 10)
+    }
+}
+
+class Druida extends Personagem {
+
+}
+
+class Necromante extends Personagem {
+    InvocacaoDosMortos(personagem){
+        personagem.recebeDano(this.ataque + 20)
+    }
+}
+
+class Assassino extends Personagem {
+        ataqueSilencioso(personagem){
+            personagem.recebeDano(this.ataque + 90)
+        }
+}
+
+class Tanque extends Personagem {
+        ataqueFatal(personagem){
+            personagem.recebeDano(this.ataque * 2)
+        }
+}
+
+class Mago extends Personagem {
+    bolaDeFogo(personagem){
+        personagem.recebeDano(this.ataque + 15)
+    }
+}
+
+
+const druida = new Druida("kode", 80, 25, 8)
+const guerreiro = new Guerreiro("Thorin", 60, 20, 15)
+const mago = new Mago("Gandalfe", 60, 35, 5)
+const arqueiro = new Arqueiro("Legolas", 80, 25, 12)
+const tanque = new Tanque("Reinhardt", 90, 15, 3)
+const necromante = new Necromante("Mortis", 70, 20, 9)
+const assassino = new Assassino("Zephyr", 50, 30, 10)
+
+guerreiro.golpePesado(mago)
+mago.curar(15)
 
 console.log (mago.mostrarStatus())
