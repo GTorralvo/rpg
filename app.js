@@ -104,4 +104,13 @@ personagens.forEach(function(persogem){
     persogem.mostrarStatus()
 })
 
-guerreiro.mostrarStatus()
+let turno = 1
+let jogadorAtual = 0
+
+function proximoTurno(){
+    turno = turno + 1
+    jogadorAtual = jogadorAtual === 0 ? 1 : 0 //operador ternário, é a mesma coisa que if e else
+}
+
+console.log(turno)
+console.log(jogadorAtual)
