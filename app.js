@@ -90,7 +90,18 @@ const tanque = new Tanque("Reinhardt", 90, 15, 3)
 const necromante = new Necromante("Mortis", 70, 20, 9)
 const assassino = new Assassino("Zephyr", 50, 30, 10)
 
-guerreiro.golpePesado(mago)
-mago.curar(15)
+const personagens = [
+    druida,
+    guerreiro,
+    mago,
+    arqueiro,
+    tanque,
+    necromante,
+    assassino
+]
 
-console.log (mago.mostrarStatus())
+personagens.forEach(function(persogem){
+    persogem.mostrarStatus()
+})
+
+guerreiro.mostrarStatus()
