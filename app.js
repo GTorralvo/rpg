@@ -112,5 +112,6 @@ function proximoTurno(){
     jogadorAtual = jogadorAtual === 0 ? 1 : 0 //operador ternário, é a mesma coisa que if e else
 }
 
-console.log(turno)
-console.log(jogadorAtual)
+const vidaGuerreiro = document.getElementById("vida-guerreiro")
+
+vidaGuerreiro.innerText = guerreiro.vida
